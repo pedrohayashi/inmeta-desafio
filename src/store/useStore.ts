@@ -65,7 +65,6 @@ const updateWorkOrder = async (
       }
     });
   }
-
   await loadWorkOrders(set);
 };
 
@@ -109,7 +108,6 @@ const loadPendingQueue = async (set: ImmerSet<WorkOrderState>) => {
   const unsynced = realm
     .objects<WorkOrder>("WorkOrder")
     .filtered("synced == false && deleted == false");
-
   set(({ state }) => {
     state.pendingQueue = Array.from(unsynced);
   });

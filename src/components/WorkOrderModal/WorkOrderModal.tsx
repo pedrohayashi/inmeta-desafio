@@ -16,7 +16,7 @@ import { useThemeColors } from "../../hooks/useThemeColors";
 import { actions } from "../../store/useStore";
 import { styles } from "./styles";
 
-interface WorkOrder {
+type WorkOrder = {
   id: string;
   title: string;
   description: string;
@@ -27,7 +27,7 @@ interface WorkOrder {
   deletedAt?: string;
   completed: boolean;
   deleted: boolean;
-}
+};
 
 type Props = {
   visible: boolean;
@@ -119,10 +119,8 @@ export const WorkOrderModal = ({ visible, onClose, initialData }: Props) => {
       >
         <View style={[styles.container, { backgroundColor: colors.card }]}>
           <Text style={[styles.header, { color: colors.text }]}>
-            {" "}
             {initialData ? "Editar Ordem" : "Nova Ordem"}
           </Text>
-
           <Controller
             control={control}
             name="title"
@@ -145,7 +143,6 @@ export const WorkOrderModal = ({ visible, onClose, initialData }: Props) => {
               {errors.title.message}
             </Text>
           )}
-
           <Controller
             control={control}
             name="description"
