@@ -30,7 +30,10 @@ const addWorkOrder = async (
 ) => {
   const realm = await getRealm();
   realm.write(() => {
-    realm.create("WorkOrder", order);
+    realm.create("WorkOrder", {
+      ...order,
+      synced: false,
+    });
   });
 
   if (syncLater) {
@@ -49,7 +52,7 @@ const updateWorkOrder = async (
 ) => {
   const realm = await getRealm();
   realm.write(() => {
-    realm.create("WorkOrder", order, UpdateMode.Modified);
+    realm.create("WorkOrder", { ...order, synced: false }, UpdateMode.Modified);
   });
 
   if (syncLater) {

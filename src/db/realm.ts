@@ -5,6 +5,6 @@ import { WorkOrderSchema } from "./schemas/WorkOrderSchema";
 export const getRealm = async () => {
   return await Realm.open({
     schema: [WorkOrderSchema, MetadataSchema],
-    schemaVersion: 2,
+    schemaVersion: 3,
   });
 };

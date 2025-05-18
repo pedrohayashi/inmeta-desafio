@@ -12,5 +12,6 @@ export const WorkOrderSchema = {
     deletedAt: "string?",
     completed: "bool",
     deleted: "bool",
+    synced: { type: "bool", optional: false, default: true } as const,
   },
 };

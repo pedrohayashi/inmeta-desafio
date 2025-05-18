@@ -11,6 +11,7 @@ export type WorkOrder = {
   deletedAt?: string;
   completed: boolean;
   deleted: boolean;
+  synced: { type: "bool"; default: true };
 };
 
 export type WorkOrderState = {

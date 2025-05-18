@@ -9,7 +9,7 @@ import {
 import { actions, state } from "../store/useStore";
 
 export const useSync = () => {
-  const { clearSyncedFromQueue, loadWorkOrders } = actions();
+  const { clearSyncedFromQueue, loadWorkOrders, setLastSyncedAt } = actions();
   const { pendingQueue } = state();
 
   const sync = async (lastSyncedAt: string) => {
@@ -35,11 +35,30 @@ export const useSync = () => {
       clearSyncedFromQueue(syncedIds);
       const result = await syncWorkOrders(lastSyncedAt);
       realm.write(() => {
+        const localUnSynced = realm
+          .objects("WorkOrder")
+          .filtered("synced == false");
+
         result.created.forEach((item) => {
-          realm.create("WorkOrder", item, UpdateMode.Modified);
+          const duplicate = localUnSynced.filtered(
+            "title == $0 AND description == $1 AND assignedTo == $2",
+            item.title,
+            item.description,
+            item.assignedTo,
+          )[0];
+          if (duplicate) realm.delete(duplicate);
+          realm.create(
+            "WorkOrder",
+            { ...item, synced: true },
+            UpdateMode.Modified,
+          );
         });
         result.updated.forEach((item) => {
-          realm.create("WorkOrder", item, UpdateMode.Modified);
+          realm.create(
+            "WorkOrder",
+            { ...item, synced: true },
+            UpdateMode.Modified,
+          );
         });
         result.deleted.forEach((id: string) => {
           const item = realm.objectForPrimaryKey("WorkOrder", id);
@@ -49,8 +68,9 @@ export const useSync = () => {
           }
         });
       });
-
       await loadWorkOrders();
+      const now = new Date().toISOString();
+      await setLastSyncedAt(now);
     } catch (err: any) {
       console.log("Erro na sincronização:", err?.message);
     }
