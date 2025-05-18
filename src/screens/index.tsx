@@ -45,11 +45,27 @@ const Home = () => {
 
   useEffect(() => {
     const unsubscribe = NetInfo.addEventListener((state) => {
-      setIsConnected(state.isConnected);
+      const connected = state.isConnected;
+      setIsConnected(connected);
+
+      if (connected && !isSyncing) {
+        setIsSyncing(true);
+        sync(lastSyncedAt ?? "2024-01-01T00:00:00Z")
+          .catch(() => {
+            Alert.alert(
+              "Falha na sincronização",
+              "Não foi possível conectar ao servidor. Verifique sua conexão ou tente novamente mais tarde.",
+              [{ text: "OK" }],
+            );
+          })
+          .finally(() => {
+            setIsSyncing(false);
+          });
+      }
     });
 
     return () => unsubscribe();
-  }, []);
+  }, [lastSyncedAt, isSyncing]);
 
   const lastSyncText = lastSyncedAt
     ? new Date(lastSyncedAt).toLocaleString()
