@@ -1,4 +1,4 @@
-# Work Orders App - inMeta Technical
+# Work Orders App - inMeta
 
 Este projeto é uma aplicação React Native com foco em **ordens de serviço offline-first**, permitindo criar, visualizar, sincronizar e editar ordens mesmo sem conexão com a internet.
 
