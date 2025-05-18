@@ -104,6 +104,17 @@ const loadLastSyncedAt = async (set: ImmerSet<WorkOrderState>) => {
   }
 };
 
+const loadPendingQueue = async (set: ImmerSet<WorkOrderState>) => {
+  const realm = await getRealm();
+  const unsynced = realm
+    .objects<WorkOrder>("WorkOrder")
+    .filtered("synced == false && deleted == false");
+
+  set(({ state }) => {
+    state.pendingQueue = Array.from(unsynced);
+  });
+};
+
 const useStore = create<WorkOrderState & WorkOrderActions>()(
   immer((set) => ({
     ...initialState,
@@ -115,6 +126,7 @@ const useStore = create<WorkOrderState & WorkOrderActions>()(
       clearSyncedFromQueue: (ids) => clearSyncedFromQueue(set, ids),
       setLastSyncedAt: (date) => setLastSyncedAt(set, date),
       loadLastSyncedAt: () => loadLastSyncedAt(set),
+      loadPendingQueue: () => loadPendingQueue(set),
     },
   })),
 );

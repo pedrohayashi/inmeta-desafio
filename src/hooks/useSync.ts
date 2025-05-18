@@ -28,7 +28,9 @@ export const useSync = () => {
           }
           syncedIds.push(item.id);
         } catch (err: any) {
-          console.warn("Falha ao sincronizar item:", item.id, err?.message);
+          throw new Error(
+            `Falha ao sincronizar item: ${(item.id, err?.message)}`,
+          );
         }
       }
 
@@ -72,7 +74,7 @@ export const useSync = () => {
       const now = new Date().toISOString();
       await setLastSyncedAt(now);
     } catch (err: any) {
-      console.log("Erro na sincronização:", err?.message);
+      throw new Error(`Erro na sincronização: ${err?.message}`);
     }
   };
 

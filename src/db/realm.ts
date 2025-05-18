@@ -1,6 +1,5 @@
 import Realm from "realm";
-import { MetadataSchema } from "./schemas/MetadataSchema";
-import { WorkOrderSchema } from "./schemas/WorkOrderSchema";
+import { MetadataSchema, WorkOrderSchema } from "./schemas";
 
 export const getRealm = async () => {
   return await Realm.open({

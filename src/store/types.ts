@@ -11,7 +11,7 @@ export type WorkOrder = {
   deletedAt?: string;
   completed: boolean;
   deleted: boolean;
-  synced: { type: "bool"; default: true };
+  synced?: { type: "bool"; default: true };
 };
 
 export type WorkOrderState = {
@@ -30,5 +30,6 @@ export type WorkOrderActions = {
     clearSyncedFromQueue: (ids: string[]) => void;
     setLastSyncedAt: (date: string) => Promise<void>;
     loadLastSyncedAt: () => Promise<void>;
+    loadPendingQueue: () => Promise<void>;
   };
 };
