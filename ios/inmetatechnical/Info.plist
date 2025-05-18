@@ -28,6 +28,7 @@
         <key>CFBundleURLSchemes</key>
         <array>
           <string>com.vuinishiusu.inmetatechnical</string>
+          <string>com.vuinishiusu.inmetatechnical</string>
         </array>
       </dict>
     </array>
