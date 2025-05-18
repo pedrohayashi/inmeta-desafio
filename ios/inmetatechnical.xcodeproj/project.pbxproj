@@ -354,7 +354,7 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = com.vuinishiusu.inmetatechnical;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pedrohayashi.inmetatechnical;
 				PRODUCT_NAME = inmetatechnical;
 				SWIFT_OBJC_BRIDGING_HEADER = "inmetatechnical/inmetatechnical-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -386,7 +386,7 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
-				PRODUCT_BUNDLE_IDENTIFIER = com.vuinishiusu.inmetatechnical;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pedrohayashi.inmetatechnical;
 				PRODUCT_NAME = inmetatechnical;
 				SWIFT_OBJC_BRIDGING_HEADER = "inmetatechnical/inmetatechnical-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

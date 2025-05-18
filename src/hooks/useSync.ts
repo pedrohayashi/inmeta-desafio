@@ -74,7 +74,7 @@ export const useSync = () => {
       const now = new Date().toISOString();
       await setLastSyncedAt(now);
     } catch (err: any) {
-      throw new Error(`Erro na sincronização: ${err?.message}`);
+      throw new Error(`Falha na sincronização: ${err?.message}`);
     }
   };
 

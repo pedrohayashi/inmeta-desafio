@@ -87,9 +87,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace 'com.vuinishiusu.inmetatechnical'
+    namespace 'com.pedrohayashi.inmetatechnical'
     defaultConfig {
-        applicationId 'com.vuinishiusu.inmetatechnical'
+        applicationId 'com.pedrohayashi.inmetatechnical'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

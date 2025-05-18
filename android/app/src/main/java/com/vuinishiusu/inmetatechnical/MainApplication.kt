@@ -1,4 +1,4 @@
-package com.vuinishiusu.inmetatechnical
+package com.pedrohayashi.inmetatechnical
 
 import android.app.Application
 import android.content.res.Configuration

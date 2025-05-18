@@ -1,4 +1,4 @@
-package com.vuinishiusu.inmetatechnical
+package com.pedrohayashi.inmetatechnical
 
 import android.os.Build
 import android.os.Bundle
