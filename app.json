@@ -2,11 +2,10 @@
   "expo": {
     "name": "inmeta-desafio",
     "slug": "inmeta-desafio",
-    "scheme": "com.pedrohayashi.inmetatechnical",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "automatic",
+    "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
       "image": "./assets/splash-icon.png",
@@ -14,27 +13,21 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.pedrohayashi.inmetatechnical"
+      "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true,
-      "package": "com.pedrohayashi.inmetatechnical"
+      "edgeToEdgeEnabled": true
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      [
-        "expo-router",
-        {
-          "root": "./src/screens"
-        }
-      ]
+      ["expo-router", { "root": "./src/screens" }]
     ]
   }
 }
+
